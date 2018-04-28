@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180428095430) do
+ActiveRecord::Schema.define(version: 20180428115518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -201,5 +201,23 @@ ActiveRecord::Schema.define(version: 20180428095430) do
     t.index ["transect_code"], name: "index_transects_on_transect_code", unique: true
   end
 
+  create_table "tree_measurements", force: :cascade do |t|
+    t.integer "circumfrence_cm"
+    t.date "measurement_date", null: false
+    t.citext "subquadrat"
+    t.string "tree_label"
+    t.bigint "species_id"
+    t.bigint "plot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["circumfrence_cm"], name: "index_tree_measurements_on_circumfrence_cm"
+    t.index ["measurement_date"], name: "index_tree_measurements_on_measurement_date"
+    t.index ["plot_id"], name: "index_tree_measurements_on_plot_id"
+    t.index ["species_id", "plot_id", "subquadrat", "tree_label", "measurement_date"], name: "unique_tree_entries", unique: true
+    t.index ["species_id"], name: "index_tree_measurements_on_species_id"
+  end
+
   add_foreign_key "plots", "transects"
+  add_foreign_key "tree_measurements", "plots"
+  add_foreign_key "tree_measurements", "species"
 end

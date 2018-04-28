@@ -1,0 +1,47 @@
+<%= form_with(model: tree_measurement, local: true) do |form| %>
+  <% if tree_measurement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tree_measurement.errors.count, "error") %> prohibited this tree_measurement from being saved:</h2>
+
+      <ul>
+      <% tree_measurement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :circumfrence_cm %>
+    <%= form.number_field :circumfrence_cm, id: :tree_measurement_circumfrence_cm %>
+  </div>
+
+  <div class="field">
+    <%= form.label :measurement_date %>
+    <%= form.date_select :measurement_date, id: :tree_measurement_measurement_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subquadrat %>
+    <%= form.text_field :subquadrat, id: :tree_measurement_subquadrat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tree_label %>
+    <%= form.text_field :tree_label, id: :tree_measurement_tree_label %>
+  </div>
+
+  <div class="field">
+    <%= form.label :species_id %>
+    <%= form.text_field :species_id, id: :tree_measurement_species_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :plot_id %>
+    <%= form.text_field :plot_id, id: :tree_measurement_plot_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

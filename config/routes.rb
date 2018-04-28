@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tree_measurements
   resources :species
   resources :plots
   resources :transects
