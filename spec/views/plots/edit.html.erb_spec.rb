@@ -4,7 +4,8 @@ RSpec.describe "plots/edit", type: :view do
   before(:each) do
     @plot = assign(:plot, Plot.create!(
       :plot_code => "",
-      :plot_name => "MyString"
+      :plot_name => "MyString",
+      :references => ""
     ))
   end
 
@@ -16,6 +17,8 @@ RSpec.describe "plots/edit", type: :view do
       assert_select "input[name=?]", "plot[plot_code]"
 
       assert_select "input[name=?]", "plot[plot_name]"
+
+      assert_select "input[name=?]", "plot[references]"
     end
   end
 end

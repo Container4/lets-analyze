@@ -11,6 +11,16 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :species_code %>
+    <%= form.text_field :species_code, id: :species_species_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :species_name %>
+    <%= form.text_field :species_name, id: :species_species_name %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

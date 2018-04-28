@@ -7,6 +7,7 @@
     <tr>
       <th>Plot code</th>
       <th>Plot name</th>
+      <th>References</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= plot.plot_code %></td>
         <td><%= plot.plot_name %></td>
+        <td><%= plot.references %></td>
         <td><%= link_to 'Show', plot %></td>
         <td><%= link_to 'Edit', edit_plot_path(plot) %></td>
         <td><%= link_to 'Destroy', plot, method: :delete, data: { confirm: 'Are you sure?' } %></td>

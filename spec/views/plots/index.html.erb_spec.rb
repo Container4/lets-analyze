@@ -5,11 +5,13 @@ RSpec.describe "plots/index", type: :view do
     assign(:plots, [
       Plot.create!(
         :plot_code => "",
-        :plot_name => "Plot Name"
+        :plot_name => "Plot Name",
+        :references => ""
       ),
       Plot.create!(
         :plot_code => "",
-        :plot_name => "Plot Name"
+        :plot_name => "Plot Name",
+        :references => ""
       )
     ])
   end
@@ -18,5 +20,6 @@ RSpec.describe "plots/index", type: :view do
     render
     assert_select "tr>td", :text => "".to_s, :count => 2
     assert_select "tr>td", :text => "Plot Name".to_s, :count => 2
+    assert_select "tr>td", :text => "".to_s, :count => 2
   end
 end
