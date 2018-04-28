@@ -1,0 +1,61 @@
+<%= content_tag :div, id: "logo", itemscope: "",  itemtype: "http://schema.org/Organization" do %>
+  <%= link_to refinery.root_path, itemprop: "url" do %>
+    <%= Refinery::Core.site_name %>
+  <% end %>
+<% end %>
+
+<% cache [I18n.locale, 'main_menu', @page, Refinery::Page.fast_menu.map(&:updated_at).max] do %>
+  <%=
+    main_menu = Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self)
+    main_menu.menu_role = 'navigation'
+    main_menu.to_html
+  %>
+<% end %>
+
+<!-- Static navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/home">LETS Analyze</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+            role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+          Transects Intro
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/design_study">Transect Design</a>
+          <a class="dropdown-item" href="/collect_data">Data Collection</a>
+          <a class="dropdown-item" href="/analyze_data">Data Analysis</a>
+          <a class="dropdown-item" href="/graph_data">Visual Analysis</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+            role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+          Processed Data
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+            role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+          Raw Data
+        </a>
+      </li>
+    </ul>
+    <!--
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> -->
+  </div>
+</nav> <!-- Static Nav bar -->

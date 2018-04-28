@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Transect code:</strong>
+  <%= @transect.transect_code %>
+</p>
+
+<p>
+  <strong>Transect name:</strong>
+  <%= @transect.transect_name %>
+</p>
+
+<%= link_to 'Edit', edit_transect_path(@transect) %> |
+<%= link_to 'Back', transects_path %>

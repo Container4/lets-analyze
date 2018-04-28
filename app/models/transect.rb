@@ -1,0 +1,2 @@
+class Transect < ApplicationRecord
+end
