@@ -1,4 +1,6 @@
 class CreateSpecies < ActiveRecord::Migration[5.1]
+
+  disable_ddl_transaction!
   def change
     create_table :species do |t|
       t.citext :species_code,     null: false
@@ -9,6 +11,6 @@ class CreateSpecies < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-    add_index :species, :species_code, unique: true
+    add_index :species, :species_code, unique: true, algorithm: :concurrently
   end
 end
