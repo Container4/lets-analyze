@@ -1,4 +1,6 @@
 class CreateTransects < ActiveRecord::Migration[5.1]
+  
+  disable_ddl_transaction!
   def change
     create_table :transects do |t|
       t.citext :transect_code,  null: false
@@ -8,6 +10,6 @@ class CreateTransects < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-    add_index :transects, :transect_code, unique: true
+    add_index :transects, :transect_code, unique: true, algorithm: :concurrently
   end
 end
