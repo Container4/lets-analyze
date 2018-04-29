@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Plot, type: :model do
-  
+
   context "relations" do
     # belongs to
     it { belong_to(:transect) }
@@ -17,8 +17,7 @@ RSpec.describe Plot, type: :model do
     # it { should validate_uniqueness_of(:plot_code).case_insensitive }
     it "enforces uniqueness of plot_code" do
       expect( FactoryBot.build(:plot) ).
-              to validate_uniqueness_of(:plot_code).
-                  case_insensitive
+              to validate_uniqueness_of(:plot_code).case_insensitive
     end
 
     it { should validate_presence_of(:plot_code) }
