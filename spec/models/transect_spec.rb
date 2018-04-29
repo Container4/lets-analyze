@@ -15,7 +15,7 @@ RSpec.describe Transect, type: :model do
   context "validators" do
     # validates :transect_code, presence: true, uniqueness: true
     # it { should validate_uniqueness_of(:transect_code).case_insensitive }
-    it "enforces uniqueness of plot_code" do
+    it "enforces uniqueness of transect_code" do
       expect( FactoryBot.build(:transect) ).
               to validate_uniqueness_of(:transect_code).case_insensitive
     end
