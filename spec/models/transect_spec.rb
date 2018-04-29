@@ -6,6 +6,8 @@ RSpec.describe Transect, type: :model do
     # it { belong_to(:transect) }
     # has many
     it { should have_many(:plots) }
+    it { should have_many(:tree_meausrements).through(:plots) }
+    it { should have_many(:species).through(:tree_meausrements) }
   end
 
   context "database" do

@@ -6,7 +6,7 @@ RSpec.describe Species, type: :model do
     # belongs to
     # it { belong_to(:transect) }
     # has_many :tree_measurements, dependent: :destroy
-    it { should have_many(:tree_meausrements) }
+    it { should have_many(:tree_meausrements).dependent(:destroy) }
   end
 
   context "database" do

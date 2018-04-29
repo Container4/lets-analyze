@@ -8,6 +8,8 @@ FactoryBot.define do
     plot_latitude    { Faker::Number.between(-85, 85) }
     plot_longitude   { Faker::Number.between(-180, 180) }
 
-    transect_id { FactoryHelpers.get_transect() }
+    # transect         { FactoryBot.build(:transect) }
+    # transect_id      { FactoryBot.create(:transect).id }
+    transect_id      { FactoryHelpers.get_transect() }
   end
 end

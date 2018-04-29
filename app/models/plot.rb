@@ -1,6 +1,7 @@
 class Plot < ApplicationRecord
   belongs_to :transect
-  has_many   :tree_measurements, dependent: :destroy
+  has_many   :tree_measurements,  dependent: :destroy
+  has_many   :species,            through:   :tree_meausrements
 
   validates :plot_code,         presence: true, uniqueness: true
   validates :plot_name,         presence: true
