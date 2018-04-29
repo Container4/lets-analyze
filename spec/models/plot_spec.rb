@@ -1,13 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Plot, type: :model do
+  
+  context "relations" do
+    # belongs to
+    it { belong_to(:transect) }
+    # has many
+    it { should have_many(:tree_meausrements) }
+  end
 
   context "database" do
     it { should have_db_index(:plot_code).unique(true) }
   end
 
   context "validators" do
-
     # it { should validate_uniqueness_of(:plot_code).case_insensitive }
     it "enforces uniqueness of plot_code" do
       expect( FactoryBot.build(:plot) ).
@@ -24,13 +30,6 @@ RSpec.describe Plot, type: :model do
 
     it { should validate_numericality_of(:plot_latitude) }
     it { should validate_numericality_of(:plot_longitude) }
-  end
-
-  context "relations" do
-    # belongs to
-    it { belong_to(:transect) }
-    # has many
-    it { should have_many(:tree_meausrements) }
   end
 
   context "methods" do
