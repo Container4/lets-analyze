@@ -1,4 +1,6 @@
 class CreateTreeMeasurements < ActiveRecord::Migration[5.1]
+
+  disable_ddl_transaction!
   def change
     create_table :tree_measurements do |t|
       t.integer :circumfrence_cm
@@ -16,6 +18,7 @@ class CreateTreeMeasurements < ActiveRecord::Migration[5.1]
                                     :subquadrat, :tree_label,
                                     :measurement_date ],
                                   unique: true,
+                                  algorithm: :concurrently,
                                   name: 'unique_tree_entries'
   end
 end
